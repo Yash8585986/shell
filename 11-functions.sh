@@ -7,7 +7,7 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
-VALIDATE() {
+VALIDATE(){
 
     if [ $1 -ne 0 ]; then
 
@@ -15,6 +15,7 @@ VALIDATE() {
     exit 1
 else
     echo "Installation of $2 successful"
+    fi
 }
 
 
