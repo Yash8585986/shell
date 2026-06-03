@@ -27,12 +27,11 @@ else
 for i in $@
 do
 dnf install $i -y &>> $LOG_FILE
-VALIDATE $? "Installion of $i"
+VALIDATE $? "$i Install"
 done
 
 # dnf install nginx -y &>> $LOG_FILE
 # VALIDATE $? "nginx"
-
 # dnf install nodejs -y &>> $LOG_FILE
 # VALIDATE $? "nodejs"
 
