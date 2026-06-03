@@ -5,7 +5,7 @@ LOGS_FOLDER="/var/log/shell-scripts"
 LOG_FILE="/var/log/shell-scripts/$0.log"
 
 if [ $USERID -ne 0 ]; then
-    echo "Please run the script with root user"
+    echo "Please run the script with root user" | tee -a $LOG_FILE
     exit 1
 fi
 
@@ -15,10 +15,10 @@ VALIDATE(){
 
     if [ $1 -ne 0 ]; then
 
-    echo "installation of $2 failed"
+    echo "installation of $2 failed" | tee -a $LOG_FILE
     exit 1
 else
-    echo "Installation of $2 successful"
+    echo "Installation of $2 successful" | tee -a $LOG_FILE
     fi
 }
 
