@@ -26,7 +26,7 @@ else
 
 for i in $@
 do
-dnf install $i -y &>> $LOG_FILE
+dnf install $i -y | tee -a  $LOG_FILE
 VALIDATE $? "$i Install"
 done
 
