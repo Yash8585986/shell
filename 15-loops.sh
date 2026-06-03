@@ -28,9 +28,9 @@ for i in $@
 do
     dnf list installed $i &>> $LOG_FILE
     if [ $? -ne 0 ]; then
-    echo "$i is not installed, installing now"
-    dnf install $i -y &>> $LOG_FILE
-    VALIDATE $? "$i Install"
+        echo "$i is not installed, installing now"
+        dnf install $i -y &>> $LOG_FILE
+        VALIDATE $? "$i Install"
     else
         echo "$i is already installed skipping installation" 
     fi
