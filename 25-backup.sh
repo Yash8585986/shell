@@ -12,7 +12,7 @@ mkdir -p LOGS_FOLDER
 
 USAGE(){
     echo "sudo backup <sour_dri> <dest_dir> <days> [default days 14]"
-    exit1
+    exit 1
 }
 
 if [ $# -lt 2 ]; then
