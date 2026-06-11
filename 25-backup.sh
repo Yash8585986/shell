@@ -1,10 +1,10 @@
 #!/bin/bash
-USERID=($id -u)
+USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="$LOGS_FOLDER/backup.log"
 
 if [ $USERID -ne 0 ]; then
-    echo "Please run this with root or sudo access" | tee -a $LOGS_FILE
+    echo "Please run this with root or sudo access" 
     exit 1
 fi
 
