@@ -16,6 +16,7 @@ mkdir -p LOGS_FOLDER
 log(){
 
     echo "$(date +%m/%d/%y %H:%M:%S) $1" | tee -a $LOGS_FILE
+    
 }
 
 USAGE(){
