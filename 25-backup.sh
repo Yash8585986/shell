@@ -41,4 +41,11 @@ FILES=$(find $SOURCE_DIR -name "*.log" -type -f -mtime $DAYS)
 log "Backup Started"
 log "Source directory: $SOURC_DIR"
 log "Destination directory: $DEST_DIR"
-log "Days:$DAYS" 
+log "Days:$DAYS
+
+
+
+if [[ -z $FILES ]]; then
+
+    log "No files to archive...skipping"    
+fi" 
