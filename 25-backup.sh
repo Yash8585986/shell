@@ -46,8 +46,26 @@ log "Days:$DAYS"
 
 
 
-if [[ -z $FILES ]]; then
+if [ -z "${FILES}" ]; then
     log "No files to archive...skipping"    
 else
-    log "Files found archiving" 
+    log "Files found archiving $FILES"
+    TIME_STAMP=$(date +%F:%T)
+    ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIME_STAMP.tar.gz"
+    echo "Archive file name=$ZIP_FILE_NAME"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +"$DAYS") | xargs tar -zcvf $ZIP_FILE_NAME
+
+        if [ -f $ZIP_FILE_NAME ]; then
+            log "Archival is ...success"
+            
+            while IFS= read -r filepath;
+            do
+                echo "Deleting file:$filepath"
+                rm -f $filepath
+                echo "Deleted file:$filepath"
+            done <<< $FILES
+        else
+            log "Archival is...failure"
+            exit 1
+        fi
 fi
