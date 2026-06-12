@@ -53,7 +53,7 @@ else
     TIME_STAMP=$(date +%F:%T)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIME_STAMP.tar.gz"
     echo "Archive file name=$ZIP_FILE_NAME"
-    find $SOURCE_DIR -name "*.log" -type f -mtime +"$DAYS") | xargs tar -zcvf $ZIP_FILE_NAME
+    find $SOURCE_DIR -name "*.log" -type f -mtime +"$DAYS" | xargs tar -zcvf $ZIP_FILE_NAME
 
         if [ -f $ZIP_FILE_NAME ]; then
             log "Archival is ...success"
