@@ -15,7 +15,7 @@ mkdir -p LOGS_FOLDER
 
 log(){
 
-    echo "$(date +%%m/%d/%y %H:%M:%S) $1" | tee -a $LOGS_FILE
+    echo "$(date +%m/%d/%y %H:%M:%S) $1" | tee -a $LOGS_FILE
 }
 
 USAGE(){
@@ -36,12 +36,12 @@ if [ ! -d $DEST_DIR ]; then
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -type -f -mtime $DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime $DAYS)
 
 log "Backup Started"
 log "Source directory: $SOURC_DIR"
 log "Destination directory: $DEST_DIR"
-log "Days:$DAYS
+log "Days:$DAYS"
 
 
 
