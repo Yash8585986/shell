@@ -2,6 +2,9 @@
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="$LOGS_FOLDER/backup.log"
+SOURCE_DIR="$1"
+DEST_DIR="$2"
+DAYS="$(3:-14)"
 
 if [ $USERID -ne 0 ]; then
     echo "Please run this with root or sudo access" 
@@ -9,6 +12,11 @@ if [ $USERID -ne 0 ]; then
 fi
 
 mkdir -p LOGS_FOLDER
+
+log(){
+
+    echo "$(date +%%m/%d/%y %H:%M:%S) $1" | tee -a $LOGS_FILE
+}
 
 USAGE(){
     echo "sudo backup <sour_dri> <dest_dir> <days> [default days 14]"
@@ -18,3 +26,19 @@ USAGE(){
 if [ $# -lt 2 ]; then
     USAGE
 fi
+
+if [ ! -d $SOURCE_DIR ]; then
+    echo "Source Directory:#SOURCE_DIR doesn't exist"
+    exit 1
+fi
+if [ ! -d DEST_DIR ]; then
+    echo "Destination directory: $DEST_DIR doesn't exist"
+    exit 1
+fi
+
+FILES=$(find $SOURCE_DIR -name "*.log" -type -f -mtime $DAYS)
+
+log "Backup Started"
+log "Source directory: $SOURC_DIR"
+log "Destination directory: $DEST_DIR"
+log "Days:$DAYS" 
