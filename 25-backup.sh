@@ -31,7 +31,7 @@ if [ ! -d $SOURCE_DIR ]; then
     echo "Source Directory:#SOURCE_DIR doesn't exist"
     exit 1
 fi
-if [ ! -d DEST_DIR ]; then
+if [ ! -d $DEST_DIR ]; then
     echo "Destination directory: $DEST_DIR doesn't exist"
     exit 1
 fi
