@@ -4,7 +4,7 @@ LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="$LOGS_FOLDER/backup.log"
 SOURCE_DIR="$1"
 DEST_DIR="$2"
-DAYS="$(3:-14)"
+DAYS=${3:-14}
 
 if [ $USERID -ne 0 ]; then
     echo "Please run this with root or sudo access" 
