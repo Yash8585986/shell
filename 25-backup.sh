@@ -29,7 +29,7 @@ if [ $# -lt 2 ]; then
 fi
 
 if [ ! -d $SOURCE_DIR ]; then
-    echo "Source Directory:#SOURCE_DIR doesn't exist"
+    echo "Source Directory:$SOURCE_DIR doesn't exist"
     exit 1
 fi
 if [ ! -d $DEST_DIR ]; then
@@ -37,7 +37,7 @@ if [ ! -d $DEST_DIR ]; then
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime $DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +"$DAYS")
 
 log "Backup Started"
 log "Source directory: $SOURC_DIR"
@@ -47,6 +47,7 @@ log "Days:$DAYS"
 
 
 if [[ -z $FILES ]]; then
-
     log "No files to archive...skipping"    
-fi" 
+else
+    log "Files found archiving" 
+fi
